@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {BankService} from './bank.service';
+import {BankService} from '../bank.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-bank-details',
+  templateUrl: './bank-details.component.html',
+  styleUrls: ['./bank-details.component.css']
 })
-export class AppComponent implements OnInit  {
+export class BankDetailsComponent implements OnInit {
 
-  
   bankForm: FormGroup ;
   bankDetails:any[] = [];
   constructor(private bankService:BankService) { 
     this.bankForm = new FormGroup({
-      bankName: new FormControl(),
-      cardNumber: new FormControl(),
-      expiryDate: new FormControl(),
+      name: new FormControl(),
+      number: new FormControl(),
+      date: new FormControl(),
     });
     this.bankService.getBankServiceDetails().subscribe(
       (data)=> {
@@ -46,9 +45,10 @@ export class AppComponent implements OnInit  {
 
   submit() {
     var bank = {
-      bankName: this.bankForm.controls.bankName.value,
-      cardNumber: this.bankForm.controls.cardNumber.value,
-      expiryDate: this.bankForm.controls.expiryDate.value,
+      id: this.bankForm.controls.number.value,
+      name: this.bankForm.controls.name.value,
+      number: this.bankForm.controls.number.value,
+      date: this.bankForm.controls.date.value,
     }
 
     this.bankService.saveBankServiceDetails(bank).subscribe(

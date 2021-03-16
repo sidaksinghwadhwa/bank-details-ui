@@ -2,25 +2,25 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col">
-                <label>Bank Name</label><br>
-                <input type="text" formControlName="bankName">
+                <label>Name</label><br>
+                <input type="text" formControlName="name">
             </div>
             <br><br>
             <div class="col">
-                <label>Card Number</label><br>
-                <input type="text" formControlName="cardNumber">
+                <label>Number</label><br>
+                <input type="number" formControlName="number">
             </div>
             <br><br>
             <div class="col">
-                <label>Expiry Date</label><br>
-                <input type="month" placeholder="month year" formControlName="expiryDate">
+                <label>Date</label><br>
+                <input type="month" placeholder="month year" formControlName="date">
             </div>
         </div>
         <br><br>
         <div class="row">
             <input hidden type="file" id="file" #fileInput (change)="uploadFile($event.target.files)" accept=".csv" class="form-control" (click)="fileInput.value = ''" />
             <div class="col-3">
-                <button type="button" (click)="fileInput.click()">Upload CSV</button>
+                <button type="button" (click)="fileInput.click()">Upload CSU</button>
             </div>
             <div class="col-3">
                 <button type="button" (click)="submit()">Submit</button>
@@ -28,20 +28,20 @@
         </div>
     </div>
     <br><br>
-    <table class="table">
+    <table>
         <thead>
-            <th>Bank Name</th>
-            <th>Card Number</th>
-            <th>Expiry Date</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Date</th>
         </thead>
         <tbody >
             <tr *ngFor="let bank of bankDetails">
-                <td> {{bank.bankName}} </td>
+                <td> {{bank.name}} </td>
                 <td>
-                  {{bank.cardNumber}}
+                  {{bank.number}}
                </td>
                <td>
-                  {{bank.expiryDate}}
+                  {{bank.date}}
                </td>
             </tr>
         </tbody>
